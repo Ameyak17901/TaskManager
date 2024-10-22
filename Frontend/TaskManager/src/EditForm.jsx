@@ -1,27 +1,25 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { updateTask } from "./apiTasks";
-// import { updateTask } from "./apiTasks";
 
-// updateTask
-function EditForm({task }) {
+function EditForm({ task }) {
   const [taskData, setTaskData] = useState({
     task: "",
-    isComplete: false
-  })
+    isComplete: false,
+  });
 
   const handleToggle = (e) => {
-    setTaskData({...taskData, [e.target.name]: e.target.checked})
-  }
+    setTaskData({ ...taskData, [e.target.name]: e.target.checked });
+  };
 
-  const handleChange = (e) =>{
-    setTaskData({...taskData,[e.target.name]: e.target.value})
-  }
+  const handleChange = (e) => {
+    setTaskData({ ...taskData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    updateTask(task._id, taskData)
-  }
+    e.preventDefault();
+    updateTask(task._id, taskData);
+  };
 
   return (
     <div className="d-flex justify-content-center align-items-center border border-dark rounded">
@@ -40,11 +38,18 @@ function EditForm({task }) {
           />
         </div>
         <div>
-          <input
-            type="checkbox"
-            checked={taskData.isComplete}
-            onChange={handleToggle}
-          />
+          {taskData.isComplete ? (
+            <input
+              type="checkbox"
+              checked={taskData.isComplete}
+              onChange={handleToggle}
+            />
+          ) : (
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+            />
+          )}
         </div>
         <div className="d-flex align-items-center">
           <button

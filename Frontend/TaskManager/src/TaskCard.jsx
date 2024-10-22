@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-// import { MdOutlineDeleteOutline } from "react-icons/md";
-// import { MdEdit } from "react-icons/md";
 import EditForm from "./EditForm";
 import { deleteTask } from "./apiTasks";
 
@@ -9,8 +7,8 @@ function TaskCard({ task }) {
   const [FormOpen, setFormOpen] = useState(false);
   const [IsOpen, setIsOpen] = useState(false);
 
-  const handleDelete = async (e, id) => {
-    console.log(e);
+  const handleDelete = async (id) => {
+
     await deleteTask(id);
   };
   console.log(handleDelete);
@@ -21,7 +19,7 @@ function TaskCard({ task }) {
           <button
             type="button"
             className="btn btn-danger btn-sm"
-            onClick={(e) => handleDelete(e, task["_id"])}
+            onClick={() => handleDelete(task["_id"])}
           >
             Delete
           </button>
