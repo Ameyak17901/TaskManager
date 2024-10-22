@@ -16,7 +16,7 @@ function Tasks({ searchText }) {
   }, [searchText]);
 
   return (
-    <>
+    <div className="d-flex flex-column gap-3">
       <div className="d-flex flex-column gap-3">
         <div className="d-flex flex-row gap-3">
           {tasks.map((task, i) => (
@@ -36,7 +36,7 @@ function Tasks({ searchText }) {
         </button>
       </div>
       {isOpen && <AddForm />}
-    </>
+    </div>
   );
 }
 
